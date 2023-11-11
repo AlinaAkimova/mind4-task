@@ -23,6 +23,6 @@ import Login from "./components/Login.vue";
 
 .log {
   position: relative;
-  top: 100px;
+  top: 116px;
 }
 </style>

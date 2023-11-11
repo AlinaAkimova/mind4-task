@@ -1,17 +1,14 @@
 <template lang="pug">
 form(class="login")
   section(class="login__section")
-    h2(class="login__head") Please login
+    h1(class="login__head") Please login
     section(class="login__inputSection")
       label(class="login__label") E-mail
-      input(class="login__input" type="text" id="email" name="email" placeholder="Enter E-mail")
+      input(class="login__input" type="email" id="email" name="email" placeholder="Enter E-mail")
       label(class="login__label") Password
-      input(class="login__input" type="text" id="password" name="password" placeholder="Enter Password")
+      input(class="login__input" type="password" id="password" name="password" placeholder="Enter Password")
     button(class="login__button login__button-login" type="submit") Login
-    section(class="login__divide")
-      div(class="login__line")
-      div(class="login__or") OR
-      div(class="login__line")
+    div(class="login__or") OR
     button(class="login__button login__button-signUp" type="submit") Sign up
     p(class="login__text") Forget password? Restore
 </template>
@@ -27,8 +24,11 @@ export default {
 
 .login {
   width: 630px;
-  background-color: rgba(255, 255, 255, 0.1);
+  height: 646px;
   border-radius: 30px;
+
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(27.5px);
 
   display: flex;
   justify-content: center;
@@ -41,6 +41,11 @@ export default {
     width: 350px;
   }
 
+  @media (max-width: 500px) {
+    width: 350px;
+    height: 550px;
+  }
+
   &__section {
     display: flex;
     flex-direction: column;
@@ -50,6 +55,7 @@ export default {
   &__head {
     @include font-title;
     color: $white;
+    margin: 45px 0 30px 0;
   }
 
   &__label {
@@ -61,10 +67,7 @@ export default {
   &__inputSection {
     display: flex;
     flex-direction: column;
-  }
-
-  &__inputSection:not(:last-child) {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
   }
 
   &__input {
@@ -73,6 +76,7 @@ export default {
     padding: 16px;
     border: none;
     border-radius: 12px;
+    line-height: 32px;
 
     color: $lightBlack;
     background-color: $white;
@@ -90,9 +94,10 @@ export default {
   &__button {
     @include font-button;
     width: 100%;
-    padding: 16px;
+    padding: 8px 10px;
     border: none;
     border-radius: 12px;
+    line-height: 44px;
 
     text-transform: uppercase;
     cursor: pointer;
@@ -110,43 +115,42 @@ export default {
     &-signUp {
       border: 1px solid rgba(255, 255, 255, 0.2);
       background-color: inherit;
-      color: $blue;
+      color: $white;
     }
   }
 
   &__button-login:hover {
     border: 1px solid rgba(255, 255, 255, 0.2);
     background-color: inherit;
+    color: $white;
   }
 
   &__button-signUp:hover {
     background-color: $white;
-  }
-
-  &__divide {
-    display: flex;
-    align-items: center;
-    margin: 15px 0;
+    color: $blue;
   }
 
   &__or {
     @include font-button;
-    padding: 0 33px;
+    padding: 15px 0;
     color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  &__line {
+  &__or::before,
+  &__or::after {
+    content: "";
     max-width: 211px;
     width: 100%;
     height: 1px;
     opacity: 0.1;
     background: $white;
   }
-
   &__text {
     @include font-main-text;
     color: $white;
-    margin-bottom: 70px;
   }
 }
 </style>
